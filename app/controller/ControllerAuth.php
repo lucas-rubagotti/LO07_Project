@@ -1,5 +1,6 @@
 <?php
 // project/controllers/ControllerAuth.php
+require_once '../model/ModelPersonne.php';
 class ControllerAuth {
 
     public static function patrimoineAccueil() {
@@ -17,7 +18,7 @@ class ControllerAuth {
 
     public static function valideUser(){
         // ajouter une validation des informations du formulaire
-        $results = ModelPersonne::getByCredentials(
+        $personne = ModelPersonne::getByCredentials(
             htmlspecialchars($_GET['login']), htmlspecialchars($_GET['password']),
         );
         // ----- Construction chemin de la vue

@@ -5,16 +5,16 @@
 require_once 'Model.php';
 
 class ModelPersonne {
-    private $id, $nom, $prenom, $status, $login, $password;
+    private $id, $nom, $prenom, $statut, $login, $password;
     public const ADMINISTRATEUR = 0;
     public const CLIENT = 1;
-    public function __construct($id = NULL, $nom = NULL, $prenom = NULL, $status = NULL,$login = NULL,$password = NULL) {
+    public function __construct($id = NULL, $nom = NULL, $prenom = NULL, $statut = NULL,$login = NULL,$password = NULL) {
         // valeurs nulles si pas de passage de parametres
         if (!is_null($id)) {
             $this->id = $id;
             $this->nom = $nom;
             $this->prenom = $prenom;
-            $this->status = $status;
+            $this->statut = $statut;
             $this->login = $login;
             $this->password = $password;
 
@@ -33,8 +33,8 @@ class ModelPersonne {
         $this->prenom = $prenom;
     }
 
-    function setStatus($status) {
-        $this->status = $status;
+    function setstatut($statut) {
+        $this->statut = $statut;
     }
     function setLogin($login) {
         $this->login = $login;
@@ -55,8 +55,8 @@ class ModelPersonne {
         return $this->prenom;
     }
 
-    function getStatus() {
-        return $this->status;
+    function getstatut() {
+        return $this->statut;
     }
 
      function getLogin() {

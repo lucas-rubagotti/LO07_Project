@@ -25,7 +25,7 @@ require ($root . '/app/view/fragment/fragmentCaveHeader.html');
           <?php
           // La liste des vins est dans une variable $results             
           foreach ($results as $element) {
-            if($element->getStatut()==ModelPersonne::CLIENT){
+            if($element->getStatut()==ModelPersonne::ADMINISTRATEUR){
                 printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>", 
                 $element->getNom(), $element->getPrenom(), $element->getLogin(),$element->getPassword());
             }
@@ -38,6 +38,5 @@ require ($root . '/app/view/fragment/fragmentCaveHeader.html');
   <?php include $root . '/app/view/fragment/fragmentCaveFooter.html'; ?>
 
   <!-- ----- fin viewAll -->
-  
   
   

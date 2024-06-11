@@ -4,6 +4,8 @@
 require ('../controller/ControllerAdministrateur.php');
 require ('../controller/ControllerClient.php');
 require ('../controller/ControllerAuth.php');
+require ('../controller/ControllerResidence.php');
+require ('../controller/ControllerCompte.php');
 
 
 
@@ -26,6 +28,19 @@ switch ($action) {
  case "valideUser":
   ControllerAuth::$action();
   break;
+ case "listeMesBanques":
+ case "listeClients":
+    ControllerClient::$action();
+    break;
+ case "listeAdministrateurs":
+    ControllerAdministrateur::$action();
+    break;
+ case "listeComptes":
+    ControllerCompte::$action();
+    break;
+ case "listeResidences":
+    ControllerResidence::$action();
+    break;
 
  // Tache par défaut
  default:

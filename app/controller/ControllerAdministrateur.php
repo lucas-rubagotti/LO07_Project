@@ -47,6 +47,17 @@ class ControllerAdministrateur {
         require ($vue);
     }
 
+     // --- Liste des administrateurs
+     public static function listeAdministrateurs() {
+        $results = ModelPersonne::getAll();
+        // ----- Construction chemin de la vue
+        include 'config.php';
+        $vue = $root . '/app/view/administrateur/viewAll.php';
+        if (DEBUG)
+            echo ("ControllerProducteur : producteurReadAll : vue = $vue");
+        require ($vue);
+    }
+
 }
 ?>
 <!-- ----- fin ControllerVin -->

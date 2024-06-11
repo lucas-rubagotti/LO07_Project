@@ -95,7 +95,7 @@ class ModelBanque
         }
     }
 
-    public static function getOne($id)
+    public static function getAllFromID($id)
     {
         try {
             $database = Model::getInstance();

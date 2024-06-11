@@ -84,12 +84,14 @@ class ModelCompte {
         }
     }
 
-    public static function getAll() {
+    public static function getBanqueId($id) {
         try {
             $database = Model::getInstance();
-            $query = "select * from compte";
+            $query = "select * from compte where personne_id = :id";
             $statement = $database->prepare($query);
-            $statement->execute();
+            $statement->execute([
+                'id'=>$id
+            ]);
             $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelCompte");
             return $results;
         } catch (PDOException $e) {

@@ -13,12 +13,23 @@ class ControllerClient {
         require ($vue);
     }
 
-    // --- Liste des producteurs
-    public static function producteurReadAll() {
-        $results = ModelProducteur::getAll();
+    // --- Liste des client
+    public static function listeClients() {
+        $results = ModelPersonne::getAll();
         // ----- Construction chemin de la vue
         include 'config.php';
-        $vue = $root . '/app/view/administrateur/viewAllBanques.php';
+        $vue = $root . '/app/view/client/viewAll.php';
+        if (DEBUG)
+            echo ("ControllerProducteur : producteurReadAll : vue = $vue");
+        require ($vue);
+    }
+
+    public static function listeMesBanques() {
+        $compte = ModelCompte::getBanqueId($_SESSION['user_id']);
+        $banque = ModelBanque::getAll();
+        // ----- Construction chemin de la vue
+        include 'config.php';
+        $vue = $root . '/app/view/client/viewBanque.php';
         if (DEBUG)
             echo ("ControllerProducteur : producteurReadAll : vue = $vue");
         require ($vue);

@@ -88,7 +88,7 @@ class ModelResidence {
     public static function getAll() {
         try {
             $database = Model::getInstance();
-            $query = "select * from residence";
+            $query = "select * from residence ORDER BY prix asc";
             $statement = $database->prepare($query);
             $statement->execute();
             $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelResidence");
