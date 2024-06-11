@@ -6,6 +6,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 $_SESSION['user_id'] = $personne[0]->getId();
 $_SESSION['user_name'] = $personne[0]->getNom();
+$_SESSION['user_prenom'] = $personne[0]->getPrenom();
 $_SESSION['statut'] = $personne[0]->getStatut();
 $_SESSION['is_authenticated'] = true;
 require ($root . '/app/view/fragment/fragmentCaveHeader.html');
@@ -17,7 +18,7 @@ require ($root . '/app/view/fragment/fragmentCaveHeader.html');
     if($_SESSION['statut']==0){
       include $root . '/app/view/fragment/fragmentPatrimoineMenuAdmin.html';
     }else if($_SESSION['statut']==1){
-      include $root . '/app/view/fragment/fragmentPatrimoineMenuClient.html';
+      include $root . '/app/view/fragment/fragmentPatrimoineMenuClient.php';
     }
     include $root . '/app/view/fragment/fragmentCaveJumbotron.html';
     

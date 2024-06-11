@@ -8,7 +8,7 @@ require ($root . '/app/view/fragment/fragmentCaveHeader.html');
 <body>
   <div class="container">
       <?php
-      include $root . '/app/view/fragment/fragmentPatrimoineMenuClient.html';
+      include $root . '/app/view/fragment/fragmentPatrimoineMenuClient.php';
       include $root . '/app/view/fragment/fragmentCaveJumbotron.html';
       ?>
 
