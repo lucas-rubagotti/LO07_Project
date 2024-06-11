@@ -25,7 +25,7 @@ require ($root . '/app/view/fragment/fragmentCaveHeader.html');
           <?php          
           foreach ($compte as $cpt) {
             foreach($banque as $bq){
-                if($bq->getId() == $cpt->getId()){
+                if($bq->getId() == $cpt->getBanque_id()){
                     printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>", 
                     $cpt->getId(),$cpt->getLabel(),$cpt->getMontant(), $bq->getLabel());
                 }
