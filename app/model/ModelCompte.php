@@ -131,6 +131,22 @@ class ModelCompte {
         }
     }
 
+    public static function getAllClient(){
+        try{
+            $database = Model::getInstance();
+            $query = "select * from compte where personne_id = :id";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'id' => $_SESSION['user_id']
+            ]);
+            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelCompte");
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+
     public static function transfert($montant,$compte1Id,$compte2Id) {
         try {
             $database = Model::getInstance();

@@ -30,6 +30,7 @@ switch ($action) {
   break;
  case "listeMesBanques":
  case "listeClients":
+case "bilanPatrimoine":
     ControllerClient::$action();
     break;
  case "listeAdministrateurs":

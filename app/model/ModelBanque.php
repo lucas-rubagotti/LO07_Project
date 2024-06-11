@@ -66,6 +66,8 @@ class ModelBanque
         }
     }
 
+    
+
     public static function getMany($query)
     {
         try {

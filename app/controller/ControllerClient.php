@@ -97,6 +97,14 @@ class ControllerClient {
         $vue = $root . '/app/view/administrateur/viewInserted.php';
         require ($vue);
     }
+    
+    public static function bilanPatrimoine(){
+        $comptes = ModelCompte::getAllClient();
+        $residences = ModelResidence::getAllClient();
+        include 'config.php';
+        $vue = $root . '/app/view/client/patrimoine.php';
+        require ($vue);
+    }
 
 }
 ?>

@@ -115,6 +115,22 @@ class ModelResidence {
         }
     }
 
+    public static function getAllClient(){
+        try{
+            $database = Model::getInstance();
+            $query = "select * from residence where personne_id = :id";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'id' => $_SESSION['user_id']
+            ]);
+            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelResidence");
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+
 }
 ?>
 <!-- ----- fin ModelVin -->
