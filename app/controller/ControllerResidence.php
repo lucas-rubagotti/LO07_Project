@@ -14,5 +14,15 @@ class ControllerResidence {
         require ($vue);
     }
 
+    public static function listeMesResidences() {
+        $residences = ModelResidence::getAll();
+        // ----- Construction chemin de la vue
+        include 'config.php';
+        $vue = $root . '/app/view/residence/viewResidenceClient.php';
+        if (DEBUG)
+            echo ("ControllerProducteur : producteurReadAll : vue = $vue");
+        require ($vue);
+    }
+
 }
 ?>
