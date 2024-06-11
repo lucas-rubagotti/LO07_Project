@@ -15,22 +15,23 @@ require ($root . '/app/view/fragment/fragmentCaveHeader.html');
     <table class = "table table-striped table-bordered">
       <thead>
         <tr>
-          <th scope = "col">nom</th>
-          <th scope = "col">prenom</th>
-          <th scope = "col">login</th>
-          <th scope = "col">mot de passe</th>
+          <th scope = "col">Id</th>
+          <th scope = "col">Label compte</th>
+          <th scope = "col">Montant</th>
+          <th scope = "col">Label banque</th>
         </tr>
       </thead>
       <tbody>
-          <?php
-          // La liste des vins est dans une variable $results             
-          foreach ($results as $element) {
-            if($element->getStatut()==ModelPersonne::CLIENT){
-                printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>", 
-                $element->getNom(), $element->getPrenom(), $element->getLogin(),$element->getPassword());
+          <?php          
+          foreach ($compte as $cpt) {
+            foreach($banque as $bq){
+                if($bq->getId() == $cpt->getId()){
+                    printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>", 
+                    $cpt->getId(),$cpt->getLabel(),$cpt->getMontant(), $bq->getLabel());
+                }
             }
-           
-          }
+            
+      }
           ?>
       </tbody>
     </table>

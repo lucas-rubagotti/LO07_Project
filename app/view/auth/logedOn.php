@@ -1,7 +1,9 @@
 
 <!-- ----- début viewInserted -->
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
 $_SESSION['user_id'] = $personne[0]->getId();
 $_SESSION['user_name'] = $personne[0]->getNom();
 $_SESSION['statut'] = $personne[0]->getStatut();

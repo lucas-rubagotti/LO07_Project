@@ -1,6 +1,7 @@
 
 <!-- ----- debut ControllerVin -->
 <?php
+session_start();
 require_once '../model/ModelPersonne.php';
 
 class ControllerClient {
