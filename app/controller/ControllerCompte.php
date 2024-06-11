@@ -25,5 +25,20 @@ class ControllerCompte {
         require ($vue);
     }
 
+    public static function transfertInterComptes(){
+        $comptes = ModelCompte::getAll();
+        include 'config.php';
+        $vue = $root . '/app/view/client/transfert.php';
+        require ($vue);
+    }
+    public static function transfertCompte(){
+        $results = ModelCompte::transfert(
+            htmlspecialchars($_GET['montant']), htmlspecialchars($_GET['compte1']), htmlspecialchars($_GET['compte2'])
+        );
+        include 'config.php';
+        $vue = $root . '/app/view/client/transfered.php';
+        require ($vue);
+    }
+
 }
 ?>

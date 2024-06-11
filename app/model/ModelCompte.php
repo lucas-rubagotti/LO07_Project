@@ -71,6 +71,20 @@ class ModelCompte {
         }
     }
 
+    public static function getAll() {
+        try {
+            $database = Model::getInstance();
+            $query = "select * from compte";
+            $statement = $database->prepare($query);
+            $statement->execute();
+            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelCompte");
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+
     public static function getMany($query) {
         try {
             $database = Model::getInstance();
@@ -110,6 +124,38 @@ class ModelCompte {
                 'id' => $id
             ]);
             $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelCompte");
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+
+    public static function transfert($montant,$compte1Id,$compte2Id) {
+        try {
+            $database = Model::getInstance();
+            $query = "UPDATE compte
+                        SET montant = montant + :montant
+                        WHERE id = :compte2Id;";
+
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'montant' => $montant,
+                'compte2Id' => $compte2Id
+            ]);
+
+            $database = Model::getInstance();
+            $query = "UPDATE compte
+                        SET montant = montant - :montant
+                        WHERE id = :compte1Id;";
+
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'montant' => $montant,
+                'compte1Id' => $compte1Id
+            ]);
+
+            $results = TRUE;
             return $results;
         } catch (PDOException $e) {
             printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());

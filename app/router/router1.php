@@ -38,6 +38,8 @@ switch ($action) {
  case "listeComptes":
     case "addCompte":
         case "createCompte":
+            case "transfertInterComptes":
+                case "transfertCompte":
     ControllerCompte::$action();
     break;
  case "listeResidences":
