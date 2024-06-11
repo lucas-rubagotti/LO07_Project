@@ -24,6 +24,7 @@ class ControllerClient {
             echo ("ControllerProducteur : producteurReadAll : vue = $vue");
         require ($vue);
     }
+    
 
     public static function listeMesBanques() {
         $compte = ModelCompte::getBanqueId($_SESSION['user_id']);

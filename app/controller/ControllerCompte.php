@@ -10,5 +10,20 @@ class ControllerCompte {
         require ($vue);
     }
 
+    public static function addCompte(){
+        $banques = ModelBanque::getAll();
+        include 'config.php';
+        $vue = $root . '/app/view/client/viewAddCompte.php';
+        require ($vue);
+    }
+    public static function createCompte(){
+        $results = ModelCompte::insert(
+            htmlspecialchars($_GET['label']), htmlspecialchars($_GET['montant']), htmlspecialchars($_GET['banque'])
+        );
+        include 'config.php';
+        $vue = $root . '/app/view/client/viewCompteAdded.php';
+        require ($vue);
+    }
+
 }
 ?>

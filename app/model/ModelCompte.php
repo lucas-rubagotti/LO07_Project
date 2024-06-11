@@ -117,7 +117,7 @@ class ModelCompte {
         }
     }
 
-    public static function insert($label, $montant, $banque_id, $personne_id) {
+    public static function insert($label, $montant, $banque_id) {
         try {
             $database = Model::getInstance();
 
@@ -136,7 +136,7 @@ class ModelCompte {
                 'label' => $label,
                 'montant' => $montant,
                 'banque_id' => $banque_id,
-                'personne_id' => $personne_id
+                'personne_id' => $_SESSION['user_id']
             ]);
             return $id;
         } catch (PDOException $e) {

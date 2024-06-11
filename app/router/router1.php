@@ -36,6 +36,8 @@ switch ($action) {
     ControllerAdministrateur::$action();
     break;
  case "listeComptes":
+    case "addCompte":
+        case "createCompte":
     ControllerCompte::$action();
     break;
  case "listeResidences":
