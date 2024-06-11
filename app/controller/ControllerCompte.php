@@ -39,6 +39,5 @@ class ControllerCompte {
         $vue = $root . '/app/view/client/transfered.php';
         require ($vue);
     }
-
 }
 ?>

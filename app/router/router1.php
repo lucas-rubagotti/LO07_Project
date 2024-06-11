@@ -22,6 +22,7 @@ $action = htmlspecialchars($param["action"]);
 // --- Liste des méthodes autorisées
 switch ($action) {
  case "banqueReadAll" :
+    case "listeAdministrateurs":   
   ControllerAdministrateur::$action();
   break;
  case "login":
@@ -32,9 +33,6 @@ switch ($action) {
  case "listeClients":
 case "bilanPatrimoine":
     ControllerClient::$action();
-    break;
- case "listeAdministrateurs":
-    ControllerAdministrateur::$action();
     break;
  case "listeComptes":
     case "addCompte":
