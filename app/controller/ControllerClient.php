@@ -62,7 +62,7 @@ class ControllerClient {
 
         // ----- Construction chemin de la vue
         include 'config.php';
-        $vue = $root . '/app/view/administrateur/viewId.php';
+        $vue = $root . '/app/view/administrateur/viewBanqueLabel.php';
         require ($vue);
     }
 

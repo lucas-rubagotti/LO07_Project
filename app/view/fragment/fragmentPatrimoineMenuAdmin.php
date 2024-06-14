@@ -18,7 +18,7 @@
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="router1.php?action=banqueReadAll">Liste des banques</a></li>
             <li><a class="dropdown-item" href="router1.php?action=banqueCreate">Ajout d'une banque</a></li>
-            <li><a class="dropdown-item" href="router1.php?action=compteBanqueListe">Listes des comptes d'une banque</a></li>
+            <li><a class="dropdown-item" href="router1.php?action=banqueReadAllLabel">Listes des comptes d'une banque</a></li>
           </ul>
         </li>
 

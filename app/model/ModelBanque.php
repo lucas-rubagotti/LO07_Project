@@ -50,12 +50,11 @@ class ModelBanque
     }
 
 
-// retourne une liste des id
-    public static function getAllId()
+    public static function getAllLabel()
     {
         try {
             $database = Model::getInstance();
-            $query = "select id from banque";
+            $query = "select distinct label from banque";
             $statement = $database->prepare($query);
             $statement->execute();
             $results = $statement->fetchAll(PDO::FETCH_COLUMN, 0);

@@ -58,6 +58,16 @@ class ControllerAdministrateur {
         require ($vue);
     }
 
+    public static function banqueReadAllLabel(){
+        $results = ModelBanque::getAllLabel();
+        // ----- Construction chemin de la vue
+        include 'config.php';
+        $vue = $root . '/app/view/administrateur/viewBanqueLabel.php';
+        if (DEBUG)
+            echo ("ControllerAdmin : vue = $vue");
+        require ($vue);
+    }
+
     public static function deconnexion(){
         session_destroy();
         include 'config.php';
