@@ -16,7 +16,7 @@ require ($root . '/app/view/fragment/fragmentCaveHeader.html');
   <div class="container">
     <?php
     if($_SESSION['statut']==0){
-      include $root . '/app/view/fragment/fragmentPatrimoineMenuAdmin.html';
+      include $root . '/app/view/fragment/fragmentPatrimoineMenuAdmin.php';
     }else if($_SESSION['statut']==1){
       include $root . '/app/view/fragment/fragmentPatrimoineMenuClient.php';
     }

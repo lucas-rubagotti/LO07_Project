@@ -54,7 +54,16 @@ class ControllerAdministrateur {
         include 'config.php';
         $vue = $root . '/app/view/administrateur/viewAll.php';
         if (DEBUG)
-            echo ("ControllerProducteur : producteurReadAll : vue = $vue");
+            echo ("ControllerAdmin : vue = $vue");
+        require ($vue);
+    }
+
+    public static function deconnexion(){
+        session_destroy();
+        include 'config.php';
+        $vue = $root . '/app/view/viewPatrimoineAccueil.php';
+        if (DEBUG)
+            echo ("ControllerAdmin : patrimoineAccueil : vue = $vue");
         require ($vue);
     }
 

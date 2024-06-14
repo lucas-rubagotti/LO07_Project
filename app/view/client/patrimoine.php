@@ -25,7 +25,6 @@ require ($root . '/app/view/fragment/fragmentCaveHeader.html');
       <tbody>
           <?php
           $capital=0;
-          // La liste des vins est dans une variable $results             
           foreach ($comptes as $compte) {
             printf("<tr class='table-info'><td>compte</td><td>%s</td><td>%s</td><td>%s</td></tr>", 
             $compte->getLabel(), $compte->getMontant(),$capital=$capital+$compte->getMontant());

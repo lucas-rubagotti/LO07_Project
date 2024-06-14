@@ -3,7 +3,7 @@
 
 <nav class="navbar navbar-expand-lg bg-warning fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="router1.php?action=patrimoineAccueil">CHIVAS - RUBAGOTTI | CLIENT | <?php echo(" "); echo($_SESSION['user_name']);echo(" "); echo($_SESSION['user_prenom']);?></a>
+    <a class="navbar-brand" href="router1.php?action=patrimoineClient">CHIVAS - RUBAGOTTI | CLIENT | <?php echo(" "); echo($_SESSION['user_name']);echo(" "); echo($_SESSION['user_prenom']);?></a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,7 +36,14 @@
           </ul>
         </li>
 
-        
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Innovations</a>
+              <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="router1.php?action=fonctionnalite">Proposez une fonctionnalité originale</a></li>
+                  <li><a class="dropdown-item" href="router1.php?action=mvcUpgrade">Proposez une amélioration du code MVC</a></li>
+              </ul>
+          </li>
+          <a class="nav-link" role="button" href="router1.php?action=deconnexion">Déconnexion</a>
       </ul>
     </div>
   </div>

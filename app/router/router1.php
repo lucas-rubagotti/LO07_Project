@@ -21,28 +21,34 @@ $action = htmlspecialchars($param["action"]);
 
 // --- Liste des méthodes autorisées
 switch ($action) {
- case "banqueReadAll" :
-    case "listeAdministrateurs":   
-  ControllerAdministrateur::$action();
-  break;
- case "login":
- case "valideUser":
-  ControllerAuth::$action();
-  break;
- case "listeMesBanques":
- case "listeClients":
-case "bilanPatrimoine":
+    case "banqueReadAll" :
+    case "listeAdministrateurs":
+    case "banqueCreate":
+    case "banqueCreated":
+    case "deconnexion":
+    case "patrimoineAdmin":
+    ControllerAdministrateur::$action();
+    break;
+    case "login":
+    case "valideUser":
+    ControllerAuth::$action();
+    break;
+    case "listeMesBanques":
+    case "listeClients":
+    case "bilanPatrimoine":
+    case "deconnexion":
+    case "patrimoineClient":
     ControllerClient::$action();
     break;
- case "listeComptes":
+    case "listeComptes":
     case "addCompte":
-        case "createCompte":
-            case "transfertInterComptes":
-                case "transfertCompte":
+    case "createCompte":
+    case "transfertInterComptes":
+    case "transfertCompte":
     ControllerCompte::$action();
     break;
- case "listeResidences":
-case "listeMesResidences":
+    case "listeResidences":
+    case "listeMesResidences":
     ControllerResidence::$action();
     break;
 
