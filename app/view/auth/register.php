@@ -20,8 +20,9 @@ require ($root . '/app/view/fragment/fragmentCaveHeader.html');
                 <option value="1">Client</option>
                 <option value="0">Administrateur</option>
             </select>
+            <br/>
             <label class='w-25' for="statut">Login :</label><input type="text" name='login'> <br/>
-            <label class='w-25' for="statut">Password :</label><input type="text" name='password'> <br/>
+            <label class='w-25' for="statut">Password :</label><input type="password" name='password'> <br/>
         </div>
         <p/>
         <br/>

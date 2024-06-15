@@ -16,7 +16,7 @@ require ($root . '/app/view/fragment/fragmentCaveHeader.html');
         <div class="form-group">
             <input type="hidden" name='action' value='valideUser'>
             <label class='w-25' for="id">Login : </label><input type="text" name='login' size='75'> <br/>
-            <label class='w-25' for="id">Password : </label><input type="text" name='password'> <br/>
+            <label class='w-25' for="id">Password : </label><input type="password" name='password'> <br/>
         </div>
         <p/>
         <br/>
