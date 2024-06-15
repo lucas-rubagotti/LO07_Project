@@ -22,17 +22,10 @@ require ($root . '/app/view/fragment/fragmentCaveHeader.html');
           <tbody>
           <?php
           $argentTot = 0;
-          foreach ($personnes as $personne) {
-              foreach ($banques as $banque) {
-                  foreach ($comptes as $compte) {
-                      if ($personne->getId() == $compte->getPersonne_id()) {
-                              $argentTot += $compte->getMontant();
-                      }
-                  }
-              }
+          foreach ($comptes as $compte) {
+              $argentTot += $compte->getMontant();
           }
           printf("<tr><td>%d</td></tr>",$argentTot);
-
           ?>
 
           </tbody>
