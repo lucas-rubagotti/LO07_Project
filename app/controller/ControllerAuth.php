@@ -37,14 +37,19 @@ class ControllerAuth {
     }
 
     public static function valideUser(){
-        // ajouter une validation des informations du formulaire
         $personne = ModelPersonne::getByCredentials(
             htmlspecialchars($_GET['login']), htmlspecialchars($_GET['password']),
         );
-        // ----- Construction chemin de la vue
-        include 'config.php';
-        $vue = $root . '/app/view/auth/logedOn.php';
+        if(!$personne){
+            include 'config.php';
+        $vue = $root . '/app/view/auth/errorLogining.php';
         require ($vue);
+        }
+        else{
+            include 'config.php';
+            $vue = $root . '/app/view/auth/logedOn.php';
+            require ($vue);
+        }
     }
 
 }

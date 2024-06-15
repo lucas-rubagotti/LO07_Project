@@ -143,6 +143,9 @@ class ModelPersonne
     public static function getByCredentials($login, $password)
     {
         try {
+            if(!isset($login)&&!isset($password)){
+                return false;
+            }
             $database = Model::getInstance();
             $query = "select * from personne where login = :login and password = :password";
             $statement = $database->prepare($query);
