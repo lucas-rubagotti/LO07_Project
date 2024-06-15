@@ -91,9 +91,7 @@ class ControllerAdministrateur {
         require ($vue);
     }
     public static function fonctionnalite(){
-        $banques = ModelBanque::getAll();
         $comptes = ModelCompte::getAll();
-        $personnes = ModelPersonne::getAll();
         include 'config.php';
         $vue = $root . '/app/view/administrateur/viewFonctionnalite.php';
         if (DEBUG)
