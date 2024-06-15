@@ -131,6 +131,22 @@ class ModelCompte {
         }
     }
 
+    public static function getAllbyPersonID($id) {
+        try {
+            $database = Model::getInstance();
+            $query = "select * from compte where personne_id = :id";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'id' => $id
+            ]);
+            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelCompte");
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+
     public static function getAllClient(){
         try{
             $database = Model::getInstance();
@@ -149,6 +165,27 @@ class ModelCompte {
 
     public static function transfert($montant,$compte1Id,$compte2Id) {
         try {
+            $database = Model::getInstance();
+            $query = "select montant from compte where id = :id";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'id' => $compte1Id
+            ]);
+            $montantcpt1 = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+            $database = Model::getInstance();
+            $query = "select montant from compte where id = :id";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'id' => $compte2Id
+            ]);
+            $montantcpt2 = $statement->fetchAll(PDO::FETCH_ASSOC);
+            if($montantcpt1[0]['montant']<$montantcpt2[0]['montant']){
+                echo("erreur");
+                return FALSE;
+            }
+
+
             $database = Model::getInstance();
             $query = "UPDATE compte
                         SET montant = montant + :montant
