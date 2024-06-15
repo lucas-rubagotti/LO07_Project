@@ -68,6 +68,19 @@ class ControllerAdministrateur {
         require ($vue);
     }
 
+    public static function banqueAccounts(){
+        $banque_label = $_GET['id'];
+        $banque_id = ModelBanque::getIdByLabel($banque_label);
+        $comptes = ModelCompte::getAccountByBanqueId($banque_id);
+        $personnes = ModelPersonne::getAll();
+        include 'config.php';
+        $vue = $root . '/app/view/administrateur/viewBanqueAccount.php';
+        if (DEBUG)
+            echo ("ControllerAdmin : vue = $vue");
+        require ($vue);
+
+    }
+
     public static function deconnexion(){
         session_destroy();
         include 'config.php';

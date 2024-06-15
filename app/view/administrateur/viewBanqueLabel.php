@@ -15,7 +15,7 @@ require ($root . '/app/view/fragment/fragmentCaveHeader.html');
 
     <form role="form" method='get' action='router1.php'>
       <div class="form-group">
-        <input type="hidden" name='action' value=''>
+        <input type="hidden" name='action' value='banqueAccounts'>
         <select class="form-control" id='id' name='id' style="width: 500px">
             <?php
             foreach ($results as $label) {

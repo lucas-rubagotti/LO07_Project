@@ -28,6 +28,7 @@ switch ($action) {
     case "deconnexion":
     case "patrimoineAdmin":
     case "banqueReadAllLabel":
+    case "banqueAccounts":
     ControllerAdministrateur::$action();
     break;
     case "login":

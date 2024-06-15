@@ -67,6 +67,21 @@ class ModelPersonne {
     }
 
 // retourne une liste des id
+    public static function getNameById($id){
+        try {
+            $database = Model::getInstance();
+            $query = "select nom from personne where id = :id";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'id'=>$id
+            ]);
+            $results = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
     public static function getAllId() {
         try {
             $database = Model::getInstance();
