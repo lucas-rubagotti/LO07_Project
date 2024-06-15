@@ -31,6 +31,7 @@ switch ($action) {
     case "banqueAccounts":
     case "listeComptes" :
     case "fonctionnalite":
+    case "mvcUpgrade":
     ControllerAdministrateur::$action();
     break;
     case "login":

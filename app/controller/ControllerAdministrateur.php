@@ -101,6 +101,14 @@ class ControllerAdministrateur {
         require ($vue);
     }
 
+    public static function mvcUpgrade(){
+        include 'config.php';
+        $vue = $root . '/app/view/administrateur/viewMvcUpgrade.php';
+        if (DEBUG)
+            echo ("ControllerAdmin : vue = $vue");
+        require ($vue);
+    }
+
     public static function deconnexion(){
         session_destroy();
         include 'config.php';
