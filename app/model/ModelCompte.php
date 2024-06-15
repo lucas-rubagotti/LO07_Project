@@ -182,6 +182,7 @@ class ModelCompte {
 
     public static function transfert($montant,$compte1Id,$compte2Id) {
         try {
+            //gestion erreur s'il n'y a pas assez d'argent
             $database = Model::getInstance();
             $query = "select montant from compte where id = :id";
             $statement = $database->prepare($query);
@@ -201,8 +202,11 @@ class ModelCompte {
                 echo("erreur");
                 return FALSE;
             }
+            if($compte1Id == $compte2Id){
+                return FALSE;
+            }
 
-
+            //effectue les modifications
             $database = Model::getInstance();
             $query = "UPDATE compte
                         SET montant = montant + :montant

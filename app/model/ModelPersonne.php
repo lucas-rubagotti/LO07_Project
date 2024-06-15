@@ -1,14 +1,15 @@
-
 <!-- ----- debut ModelVin -->
 
 <?php
 require_once 'Model.php';
 
-class ModelPersonne {
+class ModelPersonne
+{
     private $id, $nom, $prenom, $statut, $login, $password;
     public const ADMINISTRATEUR = 0;
     public const CLIENT = 1;
-    public function __construct($id = NULL, $nom = NULL, $prenom = NULL, $statut = NULL,$login = NULL,$password = NULL) {
+    public function __construct($id = NULL, $nom = NULL, $prenom = NULL, $statut = NULL, $login = NULL, $password = NULL)
+    {
         // valeurs nulles si pas de passage de parametres
         if (!is_null($id)) {
             $this->id = $id;
@@ -21,59 +22,72 @@ class ModelPersonne {
         }
     }
 
-    function setId($id) {
+    function setId($id)
+    {
         $this->id = $id;
     }
 
-    function setNom($nom) {
+    function setNom($nom)
+    {
         $this->nom = $nom;
     }
 
-    function setPrenom($prenom) {
+    function setPrenom($prenom)
+    {
         $this->prenom = $prenom;
     }
 
-    function setstatut($statut) {
+    function setstatut($statut)
+    {
         $this->statut = $statut;
     }
-    function setLogin($login) {
+    function setLogin($login)
+    {
         $this->login = $login;
     }
-    function setPassword($password) {
+    function setPassword($password)
+    {
         $this->password = $password;
     }
 
-    function getId() {
+    function getId()
+    {
         return $this->id;
     }
 
-    function getNom() {
+    function getNom()
+    {
         return $this->nom;
     }
 
-    function getPrenom() {
+    function getPrenom()
+    {
         return $this->prenom;
     }
 
-    function getstatut() {
+    function getstatut()
+    {
         return $this->statut;
     }
 
-     function getLogin() {
+    function getLogin()
+    {
         return $this->login;
     }
-     function getPassword() {
+    function getPassword()
+    {
         return $this->password;
     }
 
-// retourne une liste des id
-    public static function getNameById($id){
+    // retourne une liste des id
+    public static function getNameById($id)
+    {
         try {
             $database = Model::getInstance();
             $query = "select nom from personne where id = :id";
             $statement = $database->prepare($query);
             $statement->execute([
-                'id'=>$id
+                'id' => $id
             ]);
             $results = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
             return $results;
@@ -82,7 +96,8 @@ class ModelPersonne {
             return NULL;
         }
     }
-    public static function getAllId() {
+    public static function getAllId()
+    {
         try {
             $database = Model::getInstance();
             $query = "select id from personne";
@@ -96,7 +111,8 @@ class ModelPersonne {
         }
     }
 
-    public static function getMany($query) {
+    public static function getMany($query)
+    {
         try {
             $database = Model::getInstance();
             $statement = $database->prepare($query);
@@ -109,7 +125,8 @@ class ModelPersonne {
         }
     }
 
-    public static function getAll() {
+    public static function getAll()
+    {
         try {
             $database = Model::getInstance();
             $query = "select * from personne";
@@ -123,7 +140,8 @@ class ModelPersonne {
         }
     }
 
-    public static function getByCredentials($login, $password) {
+    public static function getByCredentials($login, $password)
+    {
         try {
             $database = Model::getInstance();
             $query = "select * from personne where login = :login and password = :password";
@@ -140,7 +158,8 @@ class ModelPersonne {
         }
 
     }
-    public static function getOne($id) {
+    public static function getOne($id)
+    {
         try {
             $database = Model::getInstance();
             $query = "select * from personne where id = :id";
@@ -150,6 +169,34 @@ class ModelPersonne {
             ]);
             $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelPersonne");
             return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+
+    public static function createPersonne($nom,$prenom,$statut,$login,$password)
+    {
+        try {
+            $database = Model::getInstance();
+            $query = "SELECT MAX(id) AS max_id FROM personne";
+            $statement = $database->prepare($query);
+            $statement->execute();
+            $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+            $database = Model::getInstance();
+            $query = "INSERT INTO personne (id, nom, prenom, statut, login,password)
+                     VALUES (:id, :nom, :prenom, :statut, :login, :password);";
+
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'id' => $results[0]['max_id']+1,
+                'nom' => $nom,
+                'prenom' => $prenom,
+                'statut' => $statut,
+                'login' => $login,
+                'password' => $password
+            ]);
         } catch (PDOException $e) {
             printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
             return NULL;
