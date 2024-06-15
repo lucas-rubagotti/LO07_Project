@@ -133,6 +133,9 @@ class ModelBanque
     public static function insert($label, $pays)
     {
         try {
+            if(empty($label)||empty($pays)){
+                return false;
+            }
             $database = Model::getInstance();
 
             // recherche de la valeur de la clé = max(id) + 1

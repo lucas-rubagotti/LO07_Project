@@ -146,6 +146,9 @@ class ModelPersonne
             if(!isset($login)&&!isset($password)){
                 return false;
             }
+            if(empty($login)||empty($password)){
+                return false;
+            }
             $database = Model::getInstance();
             $query = "select * from personne where login = :login and password = :password";
             $statement = $database->prepare($query);

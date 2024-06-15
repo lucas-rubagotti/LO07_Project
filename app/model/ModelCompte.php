@@ -239,6 +239,12 @@ class ModelCompte {
 
     public static function insert($label, $montant, $banque_id) {
         try {
+            if(!isset($label)||!isset($montant)||!isset($banque_id)){
+                return false;
+            }
+            if(empty($label)||empty($banque_id)||empty($montant)){
+                return false;
+            }
             $database = Model::getInstance();
 
             // recherche de la valeur de la clé = max(id) + 1

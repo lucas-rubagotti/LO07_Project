@@ -25,16 +25,19 @@ class ControllerAdministrateur {
         require ($vue);
     }
 
-    // Affiche un formulaire pour récupérer les informations d'une nouvelle banque
-    // La clé est gérée par le systeme et pas par l'internaute
     public static function banqueCreated() {
-        // ajouter une validation des informations du formulaire
         $results = ModelBanque::insert(
             htmlspecialchars($_GET['label']), htmlspecialchars($_GET['pays'])
         );
-        include 'config.php';
-        $vue = $root . '/app/view/administrateur/viewInserted.php';
-        require ($vue);
+        if($results){
+            include 'config.php';
+            $vue = $root . '/app/view/administrateur/viewInserted.php';
+            require ($vue);
+        }else{
+            include 'config.php';
+            $vue = $root . '/app/view/administrateur/errorBanqueCreate.php';
+            require ($vue);
+        }
     }
 
      // --- Liste des administrateurs

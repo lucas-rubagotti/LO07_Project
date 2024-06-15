@@ -18,9 +18,16 @@ class ControllerCompte {
         $results = ModelCompte::insert(
             htmlspecialchars($_GET['label']), htmlspecialchars($_GET['montant']), htmlspecialchars($_GET['banque'])
         );
-        include 'config.php';
-        $vue = $root . '/app/view/client/viewCompteAdded.php';
-        require ($vue);
+        if($results){
+            include 'config.php';
+            $vue = $root . '/app/view/client/viewCompteAdded.php';
+            require ($vue);
+        }
+        else{
+            include 'config.php';
+            $vue = $root . '/app/view/client/errorCreationCompte.php';
+            require ($vue);
+        }
     }
 
     public static function transfertInterComptes(){

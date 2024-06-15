@@ -42,8 +42,11 @@ class ControllerResidence {
 
     public static function compteSelected(){
         
-        if(!isset($_GET['compteAcheteur'])||!isset($_GET['compteVendeur'])){
-            echo("Un compte n'est pas définit ou n'existe pas");
+        if(!isset($_GET['compteAcheteur'])||!isset($_GET['compteVendeur'])||empty($_GET['compteAcheteur'])||empty($_GET['compteVendeur'])){
+            include 'config.php';
+            $vue = $root . '/app/view/residence/erreur.php';
+            require ($vue);
+            return;
         }
         $result = ModelCompte::transfert($_GET['prix'],$_GET['compteAcheteur'],$_GET['compteVendeur'],);
         if(!$result){
