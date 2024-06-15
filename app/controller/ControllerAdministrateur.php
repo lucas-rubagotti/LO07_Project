@@ -80,6 +80,16 @@ class ControllerAdministrateur {
         require ($vue);
 
     }
+    public static function listeComptes(){
+        $banques = ModelBanque::getAll();
+        $comptes = ModelCompte::getAll();
+        $personnes = ModelPersonne::getAll();
+        include 'config.php';
+        $vue = $root . '/app/view/administrateur/viewListeCompte.php';
+        if (DEBUG)
+            echo ("ControllerAdmin : vue = $vue");
+        require ($vue);
+    }
 
     public static function deconnexion(){
         session_destroy();

@@ -29,6 +29,7 @@ switch ($action) {
     case "patrimoineAdmin":
     case "banqueReadAllLabel":
     case "banqueAccounts":
+    case "listeComptes" :
     ControllerAdministrateur::$action();
     break;
     case "login":
