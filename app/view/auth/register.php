@@ -1,32 +1,30 @@
-<!-- project/views/register.php -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Register</title>
-</head>
+<?php
+require ($root . '/app/view/fragment/fragmentCaveHeader.html');
+?>
+
 <body>
-<h2>Register</h2>
-<?php if (isset($message)) echo "<p>$message</p>"; ?>
-<form method="POST" action="index.php?action=register">
-    <label for="no">Numéro:</label>
-    <input type="text" id="no" name="no" required>
-    <br>
-    <label for="prenom">Prénom:</label>
-    <input type="text" id="prenom" name="prenom" required>
-    <br>
-    <label for="statut">Statut:</label>
-    <select id="statut" name="statut">
-        <option value="1">Client</option>
-        <option value="0">Administrateur</option>
-    </select>
-    <br>
-    <label for="login">Login:</label>
-    <input type="text" id="login" name="login" required>
-    <br>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
-    <br>
-    <button type="submit">Register</button>
-</form>
-</body>
-</html>
+    <div class="container">
+        <?php
+        include $root . '/app/view/fragment/fragmentPatrimoineMenuLogin.html';
+        include $root . '/app/view/fragment/fragmentCaveJumbotron.html';
+        ?>
+
+        <h2>Register</h2>
+        <form role="form" method='get' action='router1.php'>
+        <div class="form-group">
+            <input type="hidden" name='action' value='register'>
+            <label class='w-25' for="id">Nom : </label><input type="text" name='nom' size='75'> <br/>
+            <label class='w-25' for="id">Prenom : </label><input type="text" name='prenom'> <br/>
+            <label class='w-25' for="statut">Statut:</label>
+            <select id="statut" name="statut">
+                <option value="1">Client</option>
+                <option value="0">Administrateur</option>
+            </select>
+            <label class='w-25' for="statut">Login :</label><input type="text" name='login'> <br/>
+            <label class='w-25' for="statut">Password :</label><input type="text" name='password'> <br/>
+        </div>
+        <p/>
+        <br/>
+        <button class="btn btn-primary" type="submit">Connexion</button>
+    </div>
+    <?php include $root . '/app/view/fragment/fragmentCaveFooter.html'; ?>

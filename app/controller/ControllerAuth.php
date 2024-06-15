@@ -2,6 +2,23 @@
 // project/controllers/ControllerAuth.php
 require_once '../model/ModelPersonne.php';
 class ControllerAuth {
+    public static function inscription(){
+        include 'config.php';
+        $vue = $root . '/app/view/auth/register.php';
+        if (DEBUG)
+            echo ("ControllerVin : patrimoineAccueil : vue = $vue");
+        require ($vue);
+    }
+
+    public static function register(){
+        $result = ModelPersonne::createPersonne($_GET['nom'],$_GET['prenom'],$_GET['statut'],$_GET['login'],$_GET['password']);
+        
+        include 'config.php';
+        $vue = $root . '/app/view/auth/registered.php';
+        if (DEBUG)
+            echo ("ControllerVin : patrimoineAccueil : vue = $vue");
+        require ($vue);
+    }
 
     public static function patrimoineAccueil() {
         include 'config.php';

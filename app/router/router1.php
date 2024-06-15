@@ -36,6 +36,8 @@ switch ($action) {
     break;
     case "login":
     case "valideUser":
+    case "inscription":
+    case "register":
     ControllerAuth::$action();
     break;
     case "listeMesBanques":
