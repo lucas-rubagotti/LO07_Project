@@ -35,9 +35,17 @@ class ControllerCompte {
         $results = ModelCompte::transfert(
             htmlspecialchars($_GET['montant']), htmlspecialchars($_GET['compte1']), htmlspecialchars($_GET['compte2'])
         );
-        include 'config.php';
-        $vue = $root . '/app/view/client/transfered.php';
-        require ($vue);
+        if($results){
+            include 'config.php';
+            $vue = $root . '/app/view/client/transfered.php';
+            require ($vue);
+        }
+        else{
+            include 'config.php';
+            $vue = $root . '/app/view/client/erreurTransfert.php';
+            require ($vue);
+        }
+        
     }
 }
 ?>
