@@ -38,8 +38,8 @@ class ControllerAuth {
         );
         if(!$personne){
             include 'config.php';
-        $vue = $root . '/app/view/auth/errorLogining.php';
-        require ($vue);
+            $vue = $root . '/app/view/auth/errorLogining.php';
+            require ($vue);
         }
         else{
             include 'config.php';
