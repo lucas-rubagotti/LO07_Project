@@ -6,21 +6,15 @@ class ControllerResidence {
     public static function listeResidences() {
         $residences = ModelResidence::getAll();
         $personnes = ModelPersonne::getAll();
-        // ----- Construction chemin de la vue
         include 'config.php';
         $vue = $root . '/app/view/residence/viewAll.php';
-        if (DEBUG)
-            echo ("ControllerProducteur : producteurReadAll : vue = $vue");
         require ($vue);
     }
 
     public static function listeMesResidences() {
         $residences = ModelResidence::getAll();
-        // ----- Construction chemin de la vue
         include 'config.php';
         $vue = $root . '/app/view/residence/viewResidenceClient.php';
-        if (DEBUG)
-            echo ("ControllerProducteur : producteurReadAll : vue = $vue");
         require ($vue);
     }
 
@@ -28,8 +22,6 @@ class ControllerResidence {
         $residences = ModelResidence::getAllWithoutUser();
         include 'config.php';
         $vue = $root . '/app/view/residence/selectAchatResidence.php';
-        if (DEBUG)
-            echo ("ControllerProducteur : producteurReadAll : vue = $vue");
         require ($vue);
     }
 
@@ -45,8 +37,6 @@ class ControllerResidence {
         $prix = $prix[0]['prix'];
         include 'config.php';
         $vue = $root . '/app/view/residence/selectCompte.php';
-        if (DEBUG)
-            echo ("ControllerProducteur : producteurReadAll : vue = $vue");
         require ($vue);
     }
 
@@ -59,15 +49,11 @@ class ControllerResidence {
         if(!$result){
             include 'config.php';
             $vue = $root . '/app/view/residence/erreur.php';
-            if (DEBUG)
-                echo ("ControllerProducteur : producteurReadAll : vue = $vue");
             require ($vue);
         }else{
             ModelResidence::modifieResidenceOwner($_GET['residence_id'],$_GET['prix']);
             include 'config.php';
             $vue = $root . '/app/view/residence/residenceVendu.php';
-            if (DEBUG)
-                echo ("ControllerProducteur : producteurReadAll : vue = $vue");
             require ($vue);
         }
     }

@@ -5,8 +5,6 @@ class ControllerAuth {
     public static function inscription(){
         include 'config.php';
         $vue = $root . '/app/view/auth/register.php';
-        if (DEBUG)
-            echo ("ControllerVin : patrimoineAccueil : vue = $vue");
         require ($vue);
     }
 
@@ -26,8 +24,6 @@ class ControllerAuth {
     public static function patrimoineAccueil() {
         include 'config.php';
         $vue = $root . '/app/view/viewPatrimoineAccueil.php';
-        if (DEBUG)
-            echo ("ControllerVin : patrimoineAccueil : vue = $vue");
         require ($vue);
     }
     public static function login() {
