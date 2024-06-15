@@ -12,12 +12,15 @@ class ControllerAuth {
 
     public static function register(){
         $result = ModelPersonne::createPersonne($_GET['nom'],$_GET['prenom'],$_GET['statut'],$_GET['login'],$_GET['password']);
-        
-        include 'config.php';
-        $vue = $root . '/app/view/auth/registered.php';
-        if (DEBUG)
-            echo ("ControllerVin : patrimoineAccueil : vue = $vue");
-        require ($vue);
+        if($result){
+            include 'config.php';
+            $vue = $root . '/app/view/auth/registered.php';
+            require ($vue);
+        }else{
+            include 'config.php';
+            $vue = $root . '/app/view/auth/errorRegistering.php';
+            require ($vue);
+        }
     }
 
     public static function patrimoineAccueil() {

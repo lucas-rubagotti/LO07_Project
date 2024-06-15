@@ -178,6 +178,10 @@ class ModelPersonne
     public static function createPersonne($nom,$prenom,$statut,$login,$password)
     {
         try {
+            if(!isset($nom)&&!isset($prenom)&&!isset($statut)&&!isset($login)&&!isset($password)){
+                return false;
+            }
+
             $database = Model::getInstance();
             $query = "SELECT MAX(id) AS max_id FROM personne";
             $statement = $database->prepare($query);
@@ -197,6 +201,7 @@ class ModelPersonne
                 'login' => $login,
                 'password' => $password
             ]);
+            return true;
         } catch (PDOException $e) {
             printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
             return NULL;
