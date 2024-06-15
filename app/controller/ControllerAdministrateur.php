@@ -90,6 +90,16 @@ class ControllerAdministrateur {
             echo ("ControllerAdmin : vue = $vue");
         require ($vue);
     }
+    public static function fonctionnalite(){
+        $banques = ModelBanque::getAll();
+        $comptes = ModelCompte::getAll();
+        $personnes = ModelPersonne::getAll();
+        include 'config.php';
+        $vue = $root . '/app/view/administrateur/viewFonctionnalite.php';
+        if (DEBUG)
+            echo ("ControllerAdmin : vue = $vue");
+        require ($vue);
+    }
 
     public static function deconnexion(){
         session_destroy();

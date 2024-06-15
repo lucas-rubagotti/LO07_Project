@@ -30,6 +30,7 @@ switch ($action) {
     case "banqueReadAllLabel":
     case "banqueAccounts":
     case "listeComptes" :
+    case "fonctionnalite":
     ControllerAdministrateur::$action();
     break;
     case "login":
@@ -54,6 +55,7 @@ switch ($action) {
     case "listeMesResidences":
     ControllerResidence::$action();
     break;
+
 
  // Tache par défaut
  default:
