@@ -105,6 +105,8 @@ class ControllerClient {
         $vue = $root . '/app/view/client/patrimoine.php';
         require ($vue);
     }
+
+
     public static function deconnexion(){
         session_destroy();
         include 'config.php';

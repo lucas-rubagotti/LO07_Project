@@ -16,12 +16,17 @@ require ($root . '/app/view/fragment/fragmentCaveHeader.html');
     <!-- ===================================================== -->
     <?php
     if ($results) {
-     echo ("<h3>Une nouvelle banque vient d'être ajouté </h3>");
-     echo("<ul>");
-     echo ("<li>id = " . $results . "</li>");
-     echo ("<li>Label = " . $_GET['label'] . "</li>");
-     echo ("<li>Pays = " . $_GET['pays'] . "</li>");
-     echo("</ul>");
+        if($results==-1){
+            echo ("<h3>Cette banque existe déjà</h3>");
+        }else{
+            echo ("<h3>Une nouvelle banque vient d'être ajouté </h3>");
+            echo("<ul>");
+            echo ("<li>id = " . $results . "</li>");
+            echo ("<li>Label = " . $_GET['label'] . "</li>");
+            echo ("<li>Pays = " . $_GET['pays'] . "</li>");
+            echo("</ul>");
+        }
+
     } else {
      echo ("<h3>Problème lors de la création de la banque</h3>");
      echo ("Label = " . $_GET['label']);

@@ -97,6 +97,23 @@ class ModelCompte {
             return NULL;
         }
     }
+    public static function getAccountByBanqueId($id) {
+        try {
+            $database = Model::getInstance();
+            $query = "select * from compte where banque_id = :id";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'id'=>$id
+            ]);
+            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelCompte");
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+
+
 
     public static function getBanqueId($id) {
         try {
@@ -243,6 +260,7 @@ class ModelCompte {
             return -1;
         }
     }
+
 }
 ?>
 <!-- ----- fin ModelVin -->

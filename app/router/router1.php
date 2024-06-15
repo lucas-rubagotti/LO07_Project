@@ -28,6 +28,9 @@ switch ($action) {
     case "deconnexion":
     case "patrimoineAdmin":
     case "banqueReadAllLabel":
+    case "banqueAccounts":
+    case "listeComptes" :
+    case "fonctionnalite":
     ControllerAdministrateur::$action();
     break;
     case "login":
@@ -55,6 +58,7 @@ switch ($action) {
     case "compteSelected":
     ControllerResidence::$action();
     break;
+
 
  // Tache par défaut
  default:
