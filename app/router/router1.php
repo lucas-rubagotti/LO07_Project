@@ -54,6 +54,9 @@ switch ($action) {
     break;
     case "listeResidences":
     case "listeMesResidences":
+    case "achatResidence":
+    case "selectResidence":
+    case "compteSelected":
     ControllerResidence::$action();
     break;
 

@@ -25,7 +25,7 @@
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mes résidences</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="router1.php?action=listeMesResidences">Liste de mes résidences</a></li>
-            <li><a class="dropdown-item" href="router1.php?action=">Achat d'une nouvelle résidence</a></li>
+            <li><a class="dropdown-item" href="router1.php?action=achatResidence">Achat d'une nouvelle résidence</a></li>
           </ul>
         </li>
 

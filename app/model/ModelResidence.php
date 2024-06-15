@@ -131,6 +131,74 @@ class ModelResidence {
         }
     }
 
+    public static function getAllWithoutUser(){
+        try{
+            $database = Model::getInstance();
+            $query = "select * from residence where personne_id != :id";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'id' => $_SESSION['user_id']
+            ]);
+            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelResidence");
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+
+    public static function getPrixId($id){
+        try{
+            $database = Model::getInstance();
+            $query = "select prix from residence where id = :id";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'id' => $id
+            ]);
+            $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+
+    public static function getPersonId($id){
+        try{
+            $database = Model::getInstance();
+            $query = "select personne_id from residence where id = :id";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'id' => $id
+            ]);
+            $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+
+    public static function modifieResidenceOwner($residence_id,$prix){
+        try{
+        $database = Model::getInstance();
+            $query = "UPDATE residence
+                        SET personne_id = :personID, prix= :prix
+                        WHERE id = :residence;";
+
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'residence' => $residence_id,
+                'personID' => $_SESSION['user_id'],
+                'prix' => $prix
+            ]);
+        }catch(PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+    
+
 }
 ?>
 <!-- ----- fin ModelVin -->
